@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Filter } from 'lucide-react';
+import Image from 'next/image';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -12,7 +13,7 @@ const Projects = () => {
       id: 1,
       title: 'PassMan',
       description: 'A full-stackpassword manager app built using React, Node.js, Express, and MongoDB. ',
-      image: '/api/placeholder/600/400',
+      image: '/projects/passman.jpg',
       technologies: ['React', 'Node.js', 'MongoDB', 'Express'],
       category: 'fullstack',
       liveUrl: 'https://passman-snowy.vercel.app/',
@@ -23,7 +24,7 @@ const Projects = () => {
       id: 2,
       title: 'QuestRoyale',
       description: 'A gamified To-Do app, using React and LocalStorage.',
-      image: '/api/placeholder/600/400',
+      image: '/projects/quest-royale.jpg',
       technologies: ['React', 'LocalStorage'],
       category: 'frontend',
       liveUrl: 'https://quest-royale.vercel.app/',
@@ -34,7 +35,7 @@ const Projects = () => {
       id: 3,
       title: 'Spotify Clone',
       description: 'Replicated Spotify’s frontend using HTML, CSS, and JavaScript.',
-      image: '/api/placeholder/600/400',
+      image: '/projects/spotify-clone.jpg',
       technologies: ['HTML', 'CSS', 'JavaScript'],
       category: 'frontend',
       liveUrl: 'https://spotify-clone-sable-nine.vercel.app/',
@@ -45,7 +46,7 @@ const Projects = () => {
       id: 4,
       title: 'Twitter UI Clone',
       description: 'Designed a responsive Twitter UI using Tailwind CSS.',
-      image: '/api/placeholder/600/400',
+      image: '/projects/twitter-ui.jpg',
       technologies: ['HTML','Tailwind CSS'],
       category: 'frontend',
       liveUrl: 'https://twitter-ui-clone-ivory.vercel.app/',
@@ -123,13 +124,15 @@ const Projects = () => {
               }`}
             >
               {/* Project Image */}
-              <div className="relative h-48 bg-gradient-to-br from-blue-400 to-purple-500">
-                <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
-                  <div className="text-white text-center">
-                    <div className="text-4xl font-bold mb-2">{project.title.charAt(0)}</div>
-                    <div className="text-sm opacity-90">Project Preview</div>
-                  </div>
-                </div>
+              <div className="relative h-48">
+                <Image
+                  src={project.image}
+                  alt={`${project.title} preview`}
+                  fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                  className="object-cover"
+                  priority={index < 2}
+                />
                 {project.featured && (
                   <div className="absolute top-4 left-4 bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full text-sm font-semibold">
                     Featured
@@ -169,7 +172,7 @@ const Projects = () => {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 px-4 py-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 flex items-center justify-center gap-2"
+                    className="flex-1 border border-gray-300 text-black px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors duration-200 flex items-center justify-center gap-2"
                   >
                     <Github size={16} />
                     Code
